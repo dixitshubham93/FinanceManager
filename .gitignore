@@ -1,0 +1,46 @@
+# ============================
+# Java / Maven build artifacts
+# ============================
+target/
+*.class
+*.jar
+*.war
+
+# ============================
+# IDE files
+# ============================
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+.eclipse/
+*.classpath
+*.project
+*.settings/
+
+# ============================
+# OS files
+# ============================
+.DS_Store
+Thumbs.db
+
+# ============================
+# Secrets / Config
+# ============================
+application-local.properties
+application-prod.properties
+*.env
+.env
+
+# ============================
+# Logs
+# ============================
+logs/
+*.log
+*.log.*
+
+# ============================
+# Maven wrapper (optional)
+# ============================
+!.mvn/wrapper/maven-wrapper.jar
