@@ -1,4 +1,4 @@
-# 📊 Personal Finance Manager API
+# Personal Finance Manager API
 
 [![Build Status](https://img.shields.io/badge/Build-Success-success.svg)](#)
 [![Tests Coverage](https://img.shields.io/badge/Coverage-%E2%89%A580%25-green.svg)](#)
@@ -9,7 +9,7 @@ A production-quality REST API backend for personal finance management. Engineere
 
 ---
 
-## 🚀 Live Production Deployment
+## Live Production Deployment
 
 The backend service is fully deployed and configured on Render, backed by a production-grade PostgreSQL database on Supabase:
 
@@ -23,19 +23,19 @@ You can validate the live service at any time by running:
 
 ---
 
-## ✨ Features
+## Features
 
-- 🔐 **Session-Based Authentication**: Secure authentication using HttpOnly, SameSite cookies.
-- 🛡️ **Complete Data Isolation**: Strict user-level resource security prevents cross-tenant access.
-- 💸 **Transaction Management**: Streamlined income/expense entry with category filtering.
-- 📂 **Flexible Category System**: Includes pre-seeded system categories and custom user-defined categories.
-- 🎯 **Savings Goals tracking**: Live progress tracking and dynamic remaining-amount computation.
-- 📊 **Financial Reporting**: Complete monthly and yearly report generation (net savings, category breakdowns).
-- ✅ **Robust Validation**: Extensive Java Bean Validation constraints on all endpoints.
+- **Session-Based Authentication**: Secure authentication using HttpOnly, SameSite cookies.
+- **Strict Data Isolation**: Strict user-level resource security prevents cross-tenant access.
+- **Transaction Management**: Streamlined income/expense entry with category filtering.
+- **Flexible Category System**: Includes pre-seeded system categories and custom user-defined categories.
+- **Savings Goals tracking**: Live progress tracking and dynamic remaining-amount computation.
+- **Financial Reporting**: Complete monthly and yearly report generation (net savings, category breakdowns).
+- **Robust Validation**: Extensive Java Bean Validation constraints on all endpoints.
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Component         | Technology                  | Details                                         |
 | :---------------- | :-------------------------- | :---------------------------------------------- |
@@ -49,7 +49,7 @@ You can validate the live service at any time by running:
 
 ---
 
-## 💻 Local Setup & Development
+## Local Setup & Development
 
 ### 1. Clone the repository
 ```bash
@@ -96,7 +96,7 @@ docker compose up --build -d
 
 ---
 
-## 🧪 Testing
+## Testing
 
 ### 1. Unit & Integration Tests (JUnit 5)
 Run the test suite with coverage report:
@@ -123,9 +123,9 @@ We provide a comprehensive E2E validation script (`financial_manager_tests.sh`) 
 
 ---
 
-## 📖 API Reference
+## API Reference
 
-### 🔐 Authentication
+### Authentication
 
 #### **Register**
 - **Method/Route**: `POST /api/auth/register`
@@ -164,7 +164,7 @@ We provide a comprehensive E2E validation script (`financial_manager_tests.sh`) 
 
 ---
 
-### 📂 Categories
+### Categories
 
 #### **Get All Categories**
 - **Method/Route**: `GET /api/categories`
@@ -200,7 +200,7 @@ We provide a comprehensive E2E validation script (`financial_manager_tests.sh`) 
 
 ---
 
-### 💸 Transactions
+### Transactions
 
 #### **Create Transaction**
 - **Method/Route**: `POST /api/transactions`
@@ -249,7 +249,7 @@ We provide a comprehensive E2E validation script (`financial_manager_tests.sh`) 
   ```json
   { "amount": 6000.00, "description": "Updated Salary amount" }
   ```
-  > ⚠️ *Note: The transaction date is fixed on creation and cannot be edited. Date properties sent to PUT are silently ignored.*
+  > *Note: The transaction date is fixed on creation and cannot be edited. Date properties sent to PUT are silently ignored.*
 
 #### **Delete Transaction**
 - **Method/Route**: `DELETE /api/transactions/{id}`
@@ -260,7 +260,7 @@ We provide a comprehensive E2E validation script (`financial_manager_tests.sh`) 
 
 ---
 
-### 🎯 Savings Goals
+### Savings Goals
 
 #### **Create Goal**
 - **Method/Route**: `POST /api/goals`
@@ -294,7 +294,7 @@ We provide a comprehensive E2E validation script (`financial_manager_tests.sh`) 
 
 ---
 
-### 📊 Financial Reports
+### Reports
 
 #### **Monthly Report**
 - **Method/Route**: `GET /api/reports/monthly/{year}/{month}` (e.g. `GET /api/reports/monthly/2024/1`)
@@ -314,7 +314,7 @@ We provide a comprehensive E2E validation script (`financial_manager_tests.sh`) 
 
 ---
 
-## 🛡️ Design Decisions
+## Design Decisions
 
 1. **Clean Architecture / SQL Agnostic Engine**: The persistence engine is decoupled from database-specific dialects. Hibernate dynamically detects whether MySQL or PostgreSQL is used based on JDBC connection metadata.
 2. **Wildcard CORS Policy**: Setup with pattern matching support for clean cross-origin frontend integrations.
