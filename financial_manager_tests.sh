@@ -19,7 +19,7 @@
 #   ./finance_e2e_tests.sh "https://api.example.com"    # Custom base URL
 
 # Configuration
-DEFAULT_BASE_URL="http://localhost:8080/api"
+DEFAULT_BASE_URL="https://financemanager-n4i0.onrender.com/api"
 BASE_URL="${1:-$DEFAULT_BASE_URL}"
 
 # Generate unique timestamp for this test run to avoid conflicts
