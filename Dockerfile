@@ -19,4 +19,6 @@ COPY --from=build /app/target/finance-manager-*.jar app.jar
 
 EXPOSE 8080
 
+ENV SPRING_PROFILES_ACTIVE=render
+
 ENTRYPOINT ["java", "-jar", "app.jar"]
