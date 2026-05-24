@@ -61,9 +61,17 @@ public class TransactionService {
     public TransactionListResponse getTransactions(LocalDate startDate, LocalDate endDate, String category) {
         Long userId = securityUtils.getCurrentUserId();
 
-        List<TransactionResponse> transactions = transactionRepository
-                .findAllByUserIdWithFilters(userId, startDate, endDate, category)
-                .stream()
+        LocalDate start = (startDate != null) ? startDate : LocalDate.of(1900, 1, 1);
+        LocalDate end = (endDate != null) ? endDate : LocalDate.of(2100, 12, 31);
+
+        List<Transaction> list;
+        if (category != null && !category.trim().isEmpty()) {
+            list = transactionRepository.findAllWithCategory(userId, start, end, category);
+        } else {
+            list = transactionRepository.findAllWithoutCategory(userId, start, end);
+        }
+
+        List<TransactionResponse> transactions = list.stream()
                 .map(TransactionResponse::from)
                 .toList();
 

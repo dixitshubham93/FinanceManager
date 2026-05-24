@@ -22,16 +22,30 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
             SELECT t FROM Transaction t
             WHERE t.user.id = :userId
               AND t.isDeleted = false
-              AND (:startDate IS NULL OR t.date >= :startDate)
-              AND (:endDate IS NULL OR t.date <= :endDate)
-              AND (:categoryName IS NULL OR t.category.name = :categoryName)
+              AND t.date >= :startDate
+              AND t.date <= :endDate
+              AND t.category.name = :categoryName
             ORDER BY t.date DESC, t.createdAt DESC
             """)
-    List<Transaction> findAllByUserIdWithFilters(
+    List<Transaction> findAllWithCategory(
             @Param("userId") Long userId,
             @Param("startDate") LocalDate startDate,
             @Param("endDate") LocalDate endDate,
             @Param("categoryName") String categoryName
+    );
+
+    @Query("""
+            SELECT t FROM Transaction t
+            WHERE t.user.id = :userId
+              AND t.isDeleted = false
+              AND t.date >= :startDate
+              AND t.date <= :endDate
+            ORDER BY t.date DESC, t.createdAt DESC
+            """)
+    List<Transaction> findAllWithoutCategory(
+            @Param("userId") Long userId,
+            @Param("startDate") LocalDate startDate,
+            @Param("endDate") LocalDate endDate
     );
 
     @Query("""

@@ -114,7 +114,7 @@ class TransactionServiceTest {
     @DisplayName("GetAll: returns filtered transactions sorted by newest first")
     void getTransactions_withFilters() {
         when(securityUtils.getCurrentUserId()).thenReturn(1L);
-        when(transactionRepository.findAllByUserIdWithFilters(eq(1L), any(), any(), any()))
+        when(transactionRepository.findAllWithoutCategory(eq(1L), any(), any()))
                 .thenReturn(List.of(transaction));
 
         TransactionListResponse result = transactionService.getTransactions(null, null, null);
