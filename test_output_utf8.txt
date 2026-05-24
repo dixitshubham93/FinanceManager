@@ -1,0 +1,564 @@
+[0;34mΓòöΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòù[0m
+[0;34mΓòæ                   Personal Finance Manager E2E Test Suite                     Γòæ[0m
+[0;34mΓòæ                            Comprehensive Validation                           Γòæ[0m
+[0;34mΓòÜΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓò¥[0m
+
+Target API: [0;36mhttp://localhost:8081/api[0m
+Test Mode: [1;33mEnd-to-End API Validation[0m
+Test Run ID: [0;36m1779603694[0m
+
+
+[1;33mΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ[0m
+[1;33mSCENARIO 1: USER REGISTRATION AND AUTHENTICATION[0m
+[1;33mΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ[0m
+
+This scenario tests complete user lifecycle including:
+ΓÇó User registration with valid data (expects 2xx success)
+ΓÇó Duplicate registration prevention (expects 4xx client error)
+ΓÇó Successful authentication (expects 2xx success)
+ΓÇó Failed authentication attempts (expects 4xx client error)
+ΓÇó Session-based authorization (expects 4xx when unauthorized)
+
+[0;34mΓöÇΓöÇ 1.1 User Registration ΓöÇΓöÇ[0m
+
+[0;36mΓåÆ Register first user (john.doe.1779603694@example.com)[0m
+  [0;32mΓ£ô PASS[0m - Status: 201 (expected 2xx)
+  Response: {"message":"User registered successfully","userId":3}
+
+[0;36mΓåÆ Register second user (jane.doe.1779603694@example.com)[0m
+  [0;31mΓ£ù FAIL[0m - Expected: 2xx, Got: 400
+  Response: {"message":"Validation failed","errors":{"phoneNumber":"Phone number must be a valid international number"}}
+
+[0;36mΓåÆ Attempt duplicate registration[0m
+  [0;32mΓ£ô PASS[0m - Status: 409 (expected 4xx)
+  Response: {"message":"Email address is already registered: john.doe.1779603694@example.com"}
+
+[0;36mΓåÆ Register with missing username[0m
+  [0;32mΓ£ô PASS[0m - Status: 400 (expected 4xx)
+  Response: {"message":"Validation failed","errors":{"username":"Username (email) is required"}}
+
+[0;36mΓåÆ Register with missing password[0m
+  [0;32mΓ£ô PASS[0m - Status: 400 (expected 4xx)
+  Response: {"message":"Validation failed","errors":{"password":"Password is required"}}
+
+[0;34mΓöÇΓöÇ 1.2 Authentication Tests ΓöÇΓöÇ[0m
+
+[0;36mΓåÆ Login with valid credentials[0m
+  [0;32mΓ£ô PASS[0m - Status: 200 (expected 2xx)
+  Response: {"message":"Login successful"}
+
+[0;36mΓåÆ Login with invalid password[0m
+  [0;32mΓ£ô PASS[0m - Status: 401 (expected 4xx)
+  Response: {"message":"Invalid username or password"}
+
+[0;36mΓåÆ Login with non-existent user[0m
+  [0;32mΓ£ô PASS[0m - Status: 401 (expected 4xx)
+  Response: {"message":"Invalid username or password"}
+
+[0;34mΓöÇΓöÇ 1.3 Authorization Tests ΓöÇΓöÇ[0m
+
+[0;36mΓåÆ Access protected endpoint with valid session[0m
+  [0;32mΓ£ô PASS[0m - Status: 200 (expected 2xx)
+  Response: {"categories":[{"name":"Salary","type":"INCOME","custom":false},{"name":"Food","type":"EXPENSE","custom":false},{"name":"Rent","type":"EXPENSE","custom":false},{"name":"Transportation","type":"EXPENSE","custom":false},{"name":"Entertainment","type":"EXPENSE","custom":false},{"name":"Healthcare","type":"EXPENSE","custom":false},{"name":"Utilities","type":"EXPENSE","custom":false}]}
+
+[0;36mΓåÆ Access protected endpoint without session[0m
+  [0;32mΓ£ô PASS[0m - Status: 401 (expected 4xx)
+
+[0;36mΓåÆ Logout successfully[0m
+  [0;32mΓ£ô PASS[0m - Status: 200 (expected 2xx)
+  Response: {"message":"Logout successful"}
+
+[0;36mΓåÆ Access protected endpoint after logout[0m
+  [0;32mΓ£ô PASS[0m - Status: 401 (expected 4xx)
+
+
+[1;33mΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ[0m
+[1;33mSCENARIO 2: TRANSACTION MANAGEMENT[0m
+[1;33mΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ[0m
+
+This scenario tests complete transaction CRUD operations including:
+ΓÇó Creating income and expense transactions (expects 2xx success)
+ΓÇó Input validation for amounts, dates, and categories (expects 4xx on invalid data)
+ΓÇó Retrieving transactions with filtering (expects 2xx success)
+ΓÇó Updating and deleting transactions (expects 2xx success)
+ΓÇó Date field cannot be updated
+
+[0;36mΓåÆ Re-login for transaction tests[0m
+  [0;32mΓ£ô PASS[0m - Status: 200 (expected 2xx)
+  Response: {"message":"Login successful"}
+
+[0;34mΓöÇΓöÇ 2.1 Transaction Creation ΓöÇΓöÇ[0m
+
+[0;36mΓåÆ Create income transaction (Salary)[0m
+  [0;32mΓ£ô PASS[0m - Status: 201 (expected 2xx)
+  [0;34mID extracted: 15[0m
+  Response: {"id":15,"amount":5000.00,"date":"2024-01-15","category":"Salary","description":"January Salary","type":"INCOME"}
+
+  [0;32mΓ£ô Validation passed:[0m amount = 5000.00
+  [0;32mΓ£ô Validation passed:[0m type = INCOME
+[0;36mΓåÆ Create expense transaction (Rent)[0m
+  [0;32mΓ£ô PASS[0m - Status: 201 (expected 2xx)
+  [0;34mID extracted: 16[0m
+  Response: {"id":16,"amount":1200.00,"date":"2024-01-16","category":"Rent","description":"Monthly rent payment","type":"EXPENSE"}
+
+  [0;32mΓ£ô Validation passed:[0m amount = 1200.00
+  [0;32mΓ£ô Validation passed:[0m type = EXPENSE
+[0;36mΓåÆ Create expense transaction (Food)[0m
+  [0;32mΓ£ô PASS[0m - Status: 201 (expected 2xx)
+  [0;34mID extracted: 17[0m
+  Response: {"id":17,"amount":400.00,"date":"2024-01-17","category":"Food","description":"Groceries","type":"EXPENSE"}
+
+[0;34mΓöÇΓöÇ 2.2 Transaction Validation ΓöÇΓöÇ[0m
+
+[0;36mΓåÆ Create transaction with invalid category[0m
+  [0;32mΓ£ô PASS[0m - Status: 404 (expected 4xx)
+  Response: {"message":"Category not found or not accessible: NonExistentCategory"}
+
+[0;36mΓåÆ Create transaction with future date[0m
+  [0;32mΓ£ô PASS[0m - Status: 400 (expected 4xx)
+  Response: {"message":"Validation failed","errors":{"date":"Transaction date cannot be a future date"}}
+
+[0;36mΓåÆ Create transaction with negative amount[0m
+  [0;32mΓ£ô PASS[0m - Status: 400 (expected 4xx)
+  Response: {"message":"Validation failed","errors":{"amount":"Amount must be a positive value"}}
+
+[0;36mΓåÆ Create transaction with zero amount[0m
+  [0;32mΓ£ô PASS[0m - Status: 400 (expected 4xx)
+  Response: {"message":"Validation failed","errors":{"amount":"Amount must be a positive value"}}
+
+[0;36mΓåÆ Create transaction with invalid date format[0m
+  [0;31mΓ£ù FAIL[0m - Expected: 4xx, Got: 500
+  Response: {"message":"An unexpected error occurred. Please try again later."}
+
+[0;34mΓöÇΓöÇ 2.3 Transaction Retrieval ΓöÇΓöÇ[0m
+
+[0;36mΓåÆ Get all transactions[0m
+  [0;32mΓ£ô PASS[0m - Status: 200 (expected 2xx)
+  Response: {"transactions":[{"id":17,"amount":400.00,"date":"2024-01-17","category":"Food","description":"Groceries","type":"EXPENSE"},{"id":16,"amount":1200.00,"date":"2024-01-16","category":"Rent","description":"Monthly rent payment","type":"EXPENSE"},{"id":15,"amount":5000.00,"date":"2024-01-15","category":"Salary","description":"January Salary","type":"INCOME"}]}
+
+  [0;32mΓ£ô Validation passed:[0m Found 3 occurrences of '"id":'
+[0;36mΓåÆ Filter transactions by category[0m
+  [0;32mΓ£ô PASS[0m - Status: 200 (expected 2xx)
+  Response: {"transactions":[{"id":17,"amount":400.00,"date":"2024-01-17","category":"Food","description":"Groceries","type":"EXPENSE"},{"id":16,"amount":1200.00,"date":"2024-01-16","category":"Rent","description":"Monthly rent payment","type":"EXPENSE"},{"id":15,"amount":5000.00,"date":"2024-01-15","category":"Salary","description":"January Salary","type":"INCOME"}]}
+
+  [0;32mΓ£ô Validation passed:[0m Response contains: 
+  [0;31mΓ£ù Validation failed:[0m Expected 1 occurrences of '"id":', found 3
+[0;36mΓåÆ Filter transactions by date range[0m
+  [0;32mΓ£ô PASS[0m - Status: 200 (expected 2xx)
+  Response: {"transactions":[{"id":16,"amount":1200.00,"date":"2024-01-16","category":"Rent","description":"Monthly rent payment","type":"EXPENSE"},{"id":15,"amount":5000.00,"date":"2024-01-15","category":"Salary","description":"January Salary","type":"INCOME"}]}
+
+  [0;32mΓ£ô Validation passed:[0m Found 2 occurrences of '"id":'
+[0;34mΓöÇΓöÇ 2.4 Transaction Updates - Date Restriction Test ΓöÇΓöÇ[0m
+
+[0;36mΓåÆ Attempt to update transaction date (should ignore date field)[0m
+  [0;32mΓ£ô PASS[0m - Status: 200 (expected 2xx)
+  Response: {"id":15,"amount":5000.00,"date":"2024-01-15","category":"Salary","description":"January Salary","type":"INCOME"}
+
+  [0;32mΓ£ô Validation passed:[0m date = 2024-01-15
+[0;36mΓåÆ Update transaction amount and description (no date)[0m
+  [0;32mΓ£ô PASS[0m - Status: 200 (expected 2xx)
+  Response: {"id":15,"amount":5500.00,"date":"2024-01-15","category":"Salary","description":"Updated January Salary with bonus","type":"INCOME"}
+
+  [0;32mΓ£ô Validation passed:[0m date = 2024-01-15
+  [0;32mΓ£ô Validation passed:[0m amount = 5500.00
+[0;36mΓåÆ Update with date field included (should ignore date)[0m
+  [0;32mΓ£ô PASS[0m - Status: 200 (expected 2xx)
+  Response: {"id":17,"amount":450.00,"date":"2024-01-17","category":"Food","description":"Trying to change date","type":"EXPENSE"}
+
+  [0;32mΓ£ô Validation passed:[0m date = 2024-01-17
+  [0;32mΓ£ô Validation passed:[0m amount = 450.00
+  [0;32mΓ£ô Validation passed:[0m description = Trying to change date
+[0;36mΓåÆ Update non-existent transaction[0m
+  [0;32mΓ£ô PASS[0m - Status: 404 (expected 4xx)
+  Response: {"message":"Transaction not found with id: 999999"}
+
+[0;34mΓöÇΓöÇ 2.5 Transaction Deletion ΓöÇΓöÇ[0m
+
+[0;36mΓåÆ Delete transaction[0m
+  [0;32mΓ£ô PASS[0m - Status: 200 (expected 2xx)
+  Response: {"message":"Transaction deleted successfully"}
+
+[0;36mΓåÆ Delete non-existent transaction[0m
+  [0;32mΓ£ô PASS[0m - Status: 404 (expected 4xx)
+  Response: {"message":"Transaction not found with id: 999999"}
+
+
+[1;33mΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ[0m
+[1;33mSCENARIO 3: CATEGORY MANAGEMENT[0m
+[1;33mΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ[0m
+
+This scenario tests category management including:
+ΓÇó Viewing default categories (expects 2xx success)
+ΓÇó Creating custom categories (expects 2xx success)
+ΓÇó Preventing duplicate category names (expects 4xx conflict)
+ΓÇó Deleting custom categories with usage validation (expects 4xx when in use)
+
+[0;34mΓöÇΓöÇ 3.1 Category Viewing ΓöÇΓöÇ[0m
+
+[0;36mΓåÆ Get all categories (default + custom)[0m
+  [0;32mΓ£ô PASS[0m - Status: 200 (expected 2xx)
+  Response: {"categories":[{"name":"Salary","type":"INCOME","custom":false},{"name":"Food","type":"EXPENSE","custom":false},{"name":"Rent","type":"EXPENSE","custom":false},{"name":"Transportation","type":"EXPENSE","custom":false},{"name":"Entertainment","type":"EXPENSE","custom":false},{"name":"Healthcare","type":"EXPENSE","custom":false},{"name":"Utilities","type":"EXPENSE","custom":false}]}
+
+  [0;32mΓ£ô Validation passed:[0m Response contains: 
+  [0;32mΓ£ô Validation passed:[0m Response contains: 
+  [0;32mΓ£ô Validation passed:[0m Response contains: 
+[0;34mΓöÇΓöÇ 3.2 Custom Category Creation ΓöÇΓöÇ[0m
+
+[0;36mΓåÆ Create custom income category[0m
+  [0;32mΓ£ô PASS[0m - Status: 201 (expected 2xx)
+  Response: {"name":"Freelance_1779603694","type":"INCOME","custom":true}
+
+  [0;32mΓ£ô Validation passed:[0m custom = true
+[0;36mΓåÆ Create custom expense category[0m
+  [0;32mΓ£ô PASS[0m - Status: 201 (expected 2xx)
+  Response: {"name":"GymMembership_1779603694","type":"EXPENSE","custom":true}
+
+[0;36mΓåÆ Attempt duplicate category creation[0m
+  [0;32mΓ£ô PASS[0m - Status: 409 (expected 4xx)
+  Response: {"message":"Category with name 'Freelance_1779603694' already exists"}
+
+[0;36mΓåÆ Create category with invalid type[0m
+  [0;31mΓ£ù FAIL[0m - Expected: 4xx, Got: 500
+  Response: {"message":"An unexpected error occurred. Please try again later."}
+
+[0;34mΓöÇΓöÇ 3.3 Category Usage and Deletion ΓöÇΓöÇ[0m
+
+[0;36mΓåÆ Create transaction with custom category[0m
+  [0;32mΓ£ô PASS[0m - Status: 201 (expected 2xx)
+  [0;34mID extracted: 18[0m
+  Response: {"id":18,"amount":1500.00,"date":"2024-01-18","category":"Freelance_1779603694","description":"Client project payment","type":"INCOME"}
+
+[0;36mΓåÆ Try to delete category in use[0m
+  [0;32mΓ£ô PASS[0m - Status: 400 (expected 4xx)
+  Response: {"message":"Category 'Freelance_1779603694' cannot be deleted as it is referenced by existing transactions"}
+
+[0;36mΓåÆ Delete unused custom category[0m
+  [0;32mΓ£ô PASS[0m - Status: 200 (expected 2xx)
+  Response: {"message":"Category deleted successfully"}
+
+[0;36mΓåÆ Try to delete default category[0m
+  [0;32mΓ£ô PASS[0m - Status: 403 (expected 4xx)
+  Response: {"message":"Default system categories cannot be deleted"}
+
+
+[1;33mΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ[0m
+[1;33mSCENARIO 4: SAVINGS GOALS MANAGEMENT WITH PROGRESS CALCULATION[0m
+[1;33mΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ[0m
+
+This scenario tests savings goals functionality including:
+ΓÇó Creating goals with valid target amounts and dates (expects 2xx success)
+ΓÇó Input validation for goals (expects 4xx for invalid data)
+ΓÇó Progress tracking based on transactions (expects 2xx with calculated progress)
+ΓÇó Goal start date defaults to creation date
+ΓÇó Progress = (Total Income - Total Expenses) since goal start date
+
+[0;34mΓöÇΓöÇ 4.1 Goal Creation and Default Start Date ΓöÇΓöÇ[0m
+
+[0;36mΓåÆ Create goal without start date (should default to today)[0m
+  [0;32mΓ£ô PASS[0m - Status: 201 (expected 2xx)
+  [0;34mID extracted: 7[0m
+  Response: {"id":7,"goalName":"Emergency Fund No Start Date","targetAmount":10000.00,"targetDate":"2027-01-01","startDate":"2026-05-24","currentProgress":0.00,"progressPercentage":0.00,"remainingAmount":10000.00}
+
+  [0;32mΓ£ô Validation passed:[0m startDate = 2026-05-24 (default date)
+[0;36mΓåÆ Create emergency fund goal with explicit start date[0m
+  [0;32mΓ£ô PASS[0m - Status: 201 (expected 2xx)
+  [0;34mID extracted: 8[0m
+  Response: {"id":8,"goalName":"Emergency Fund","targetAmount":10000.00,"targetDate":"2027-01-01","startDate":"2024-01-01","currentProgress":6550.00,"progressPercentage":65.50,"remainingAmount":3450.00}
+
+  [0;32mΓ£ô Validation passed:[0m currentProgress = 6550.00
+  [0;31mΓ£ù Validation failed:[0m progressPercentage expected 65.5, got 65.50
+  [0;32mΓ£ô Validation passed:[0m remainingAmount = 3450.00
+[0;36mΓåÆ Create vacation fund goal[0m
+  [0;32mΓ£ô PASS[0m - Status: 201 (expected 2xx)
+  [0;34mID extracted: 9[0m
+  Response: {"id":9,"goalName":"Vacation Fund","targetAmount":5000.00,"targetDate":"2027-12-01","startDate":"2024-02-01","currentProgress":0.00,"progressPercentage":0.00,"remainingAmount":5000.00}
+
+  [0;31mΓ£ù Validation failed:[0m currentProgress expected 0, got 0.00
+  [0;31mΓ£ù Validation failed:[0m progressPercentage expected 0.0, got 0.00
+[0;34mΓöÇΓöÇ 4.2 Goal Validation ΓöÇΓöÇ[0m
+
+[0;36mΓåÆ Create goal with past target date[0m
+  [0;32mΓ£ô PASS[0m - Status: 400 (expected 4xx)
+  Response: {"message":"Validation failed","errors":{"targetDate":"Target date must be a future date"}}
+
+[0;36mΓåÆ Create goal with negative amount[0m
+  [0;32mΓ£ô PASS[0m - Status: 400 (expected 4xx)
+  Response: {"message":"Validation failed","errors":{"targetAmount":"Target amount must be a positive value","targetDate":"Target date must be a future date"}}
+
+[0;36mΓåÆ Create goal with zero amount[0m
+  [0;32mΓ£ô PASS[0m - Status: 400 (expected 4xx)
+  Response: {"message":"Validation failed","errors":{"targetAmount":"Target amount must be a positive value","targetDate":"Target date must be a future date"}}
+
+[0;36mΓåÆ Create goal with start date after target date[0m
+  [0;32mΓ£ô PASS[0m - Status: 400 (expected 4xx)
+  Response: {"message":"Validation failed","errors":{"targetDate":"Target date must be a future date"}}
+
+[0;34mΓöÇΓöÇ 4.3 Goal Progress After Adding Transactions ΓöÇΓöÇ[0m
+
+[0;36mΓåÆ Add income after second goal start date[0m
+  [0;32mΓ£ô PASS[0m - Status: 201 (expected 2xx)
+  [0;34mID extracted: 19[0m
+  Response: {"id":19,"amount":3000.00,"date":"2024-02-15","category":"Salary","description":"February bonus","type":"INCOME"}
+
+[0;36mΓåÆ Add expense after second goal start date[0m
+  [0;32mΓ£ô PASS[0m - Status: 201 (expected 2xx)
+  [0;34mID extracted: 20[0m
+  Response: {"id":20,"amount":500.00,"date":"2024-02-20","category":"Food","description":"February groceries","type":"EXPENSE"}
+
+[0;36mΓåÆ Get vacation fund goal with updated progress[0m
+  [0;32mΓ£ô PASS[0m - Status: 200 (expected 2xx)
+  Response: {"id":9,"goalName":"Vacation Fund","targetAmount":5000.00,"targetDate":"2027-12-01","startDate":"2024-02-01","currentProgress":2500.00,"progressPercentage":50.00,"remainingAmount":2500.00}
+
+  [0;32mΓ£ô Validation passed:[0m currentProgress = 2500.00
+  [0;31mΓ£ù Validation failed:[0m progressPercentage expected 50.0, got 50.00
+  [0;32mΓ£ô Validation passed:[0m remainingAmount = 2500.00
+[0;34mΓöÇΓöÇ 4.4 Goal Management ΓöÇΓöÇ[0m
+
+[0;36mΓåÆ Get all goals with progress[0m
+  [0;32mΓ£ô PASS[0m - Status: 200 (expected 2xx)
+  Response: {"goals":[{"id":9,"goalName":"Vacation Fund","targetAmount":5000.00,"targetDate":"2027-12-01","startDate":"2024-02-01","currentProgress":2500.00,"progressPercentage":50.00,"remainingAmount":2500.00},{"id":8,"goalName":"Emergency Fund","targetAmount":10000.00,"targetDate":"2027-01-01","startDate":"2024-01-01","currentProgress":9050.00,"progressPercentage":90.50,"remainingAmount":950.00},{"id":7,"goalName":"Emergency Fund No Start Date","targetAmount":10000.00,"targetDate":"2027-01-01","startDate":"2026-05-24","currentProgress":0.00,"progressPercentage":0.00,"remainingAmount":10000.00}]}
+
+  [0;32mΓ£ô Validation passed:[0m Found 3 occurrences of '"id":'
+[0;36mΓåÆ Update goal target amount[0m
+  [0;32mΓ£ô PASS[0m - Status: 200 (expected 2xx)
+  Response: {"id":8,"goalName":"Emergency Fund","targetAmount":15000.00,"targetDate":"2027-01-01","startDate":"2024-01-01","currentProgress":9050.00,"progressPercentage":60.33,"remainingAmount":5950.00}
+
+  [0;32mΓ£ô Validation passed:[0m progressPercentage = 60.33
+  [0;32mΓ£ô Validation passed:[0m remainingAmount = 5950.00
+[0;36mΓåÆ Update goal target date[0m
+  [0;32mΓ£ô PASS[0m - Status: 200 (expected 2xx)
+  Response: {"id":8,"goalName":"Emergency Fund","targetAmount":15000.00,"targetDate":"2028-01-01","startDate":"2024-01-01","currentProgress":9050.00,"progressPercentage":60.33,"remainingAmount":5950.00}
+
+[0;36mΓåÆ Update non-existent goal[0m
+  [0;32mΓ£ô PASS[0m - Status: 404 (expected 4xx)
+  Response: {"message":"Savings goal not found with id: 999999"}
+
+
+[1;33mΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ[0m
+[1;33mSCENARIO 5: TRANSACTION DELETION IMPACT ON GOALS AND REPORTS[0m
+[1;33mΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ[0m
+
+This scenario tests that deleted transactions:
+ΓÇó No longer affect goal progress calculations
+ΓÇó Are excluded from monthly and yearly reports
+ΓÇó Ensures data consistency after deletion
+
+[0;34mΓöÇΓöÇ 5.1 Record Current State ΓöÇΓöÇ[0m
+
+[0;36mΓåÆ Get vacation fund goal before deletion[0m
+  [0;32mΓ£ô PASS[0m - Status: 200 (expected 2xx)
+  Response: {"id":9,"goalName":"Vacation Fund","targetAmount":5000.00,"targetDate":"2027-12-01","startDate":"2024-02-01","currentProgress":2500.00,"progressPercentage":50.00,"remainingAmount":2500.00}
+
+  [0;32mΓ£ô Validation passed:[0m currentProgress = 2500.00
+[0;36mΓåÆ Get February 2024 report before deletion[0m
+  [0;32mΓ£ô PASS[0m - Status: 200 (expected 2xx)
+  Response: {"month":2,"year":2024,"totalIncome":{"Salary":3000.00},"totalExpenses":{"Food":500.00},"netSavings":2500.00}
+
+  Checking February report before deletion...
+  [0;32mΓ£ô Validation passed:[0m netSavings = 2500.00
+[0;34mΓöÇΓöÇ 5.2 Delete Transaction and Verify Impact ΓöÇΓöÇ[0m
+
+[0;36mΓåÆ Delete February expense transaction[0m
+  [0;32mΓ£ô PASS[0m - Status: 200 (expected 2xx)
+  Response: {"message":"Transaction deleted successfully"}
+
+[0;36mΓåÆ Get vacation fund goal after expense deletion[0m
+  [0;32mΓ£ô PASS[0m - Status: 200 (expected 2xx)
+  Response: {"id":9,"goalName":"Vacation Fund","targetAmount":5000.00,"targetDate":"2027-12-01","startDate":"2024-02-01","currentProgress":3000.00,"progressPercentage":60.00,"remainingAmount":2000.00}
+
+  [0;32mΓ£ô Validation passed:[0m currentProgress = 3000.00
+  [0;31mΓ£ù Validation failed:[0m progressPercentage expected 60.0, got 60.00
+[0;36mΓåÆ Get February 2024 report after deletion[0m
+  [0;32mΓ£ô PASS[0m - Status: 200 (expected 2xx)
+  Response: {"month":2,"year":2024,"totalIncome":{"Salary":3000.00},"totalExpenses":{},"netSavings":3000.00}
+
+  [0;32mΓ£ô Validation passed:[0m netSavings = 3000.00
+[0;34mΓöÇΓöÇ 5.3 Delete Income Transaction and Verify ΓöÇΓöÇ[0m
+
+[0;36mΓåÆ Delete February income transaction[0m
+  [0;32mΓ£ô PASS[0m - Status: 200 (expected 2xx)
+  Response: {"message":"Transaction deleted successfully"}
+
+[0;36mΓåÆ Get vacation fund goal after income deletion[0m
+  [0;32mΓ£ô PASS[0m - Status: 200 (expected 2xx)
+  Response: {"id":9,"goalName":"Vacation Fund","targetAmount":5000.00,"targetDate":"2027-12-01","startDate":"2024-02-01","currentProgress":0.00,"progressPercentage":0.00,"remainingAmount":5000.00}
+
+  [0;31mΓ£ù Validation failed:[0m currentProgress expected 0, got 0.00
+  [0;31mΓ£ù Validation failed:[0m progressPercentage expected 0.0, got 0.00
+[0;36mΓåÆ Get February 2024 report after all deletions[0m
+  [0;32mΓ£ô PASS[0m - Status: 200 (expected 2xx)
+  Response: {"month":2,"year":2024,"totalIncome":{},"totalExpenses":{},"netSavings":0}
+
+  [0;32mΓ£ô Validation passed:[0m netSavings = 0
+[0;36mΓåÆ Delete vacation fund goal[0m
+  [0;32mΓ£ô PASS[0m - Status: 200 (expected 2xx)
+  Response: {"message":"Goal deleted successfully"}
+
+[0;36mΓåÆ Delete non-existent goal[0m
+  [0;32mΓ£ô PASS[0m - Status: 404 (expected 4xx)
+  Response: {"message":"Savings goal not found with id: 999999"}
+
+
+[1;33mΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ[0m
+[1;33mSCENARIO 6: REPORTS GENERATION WITH CALCULATIONS[0m
+[1;33mΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ[0m
+
+This scenario tests report generation including:
+ΓÇó Monthly reports with income/expense breakdown (expects 2xx success)
+ΓÇó Yearly reports aggregating monthly data (expects 2xx success)
+ΓÇó Accurate calculations for net savings
+ΓÇó Input validation for report parameters (expects 4xx for invalid input)
+
+[0;34mΓöÇΓöÇ 6.1 Monthly Reports with Calculations ΓöÇΓöÇ[0m
+
+[0;36mΓåÆ Generate January 2024 monthly report[0m
+  [0;32mΓ£ô PASS[0m - Status: 200 (expected 2xx)
+  Response: {"month":1,"year":2024,"totalIncome":{"Salary":5500.00,"Freelance_1779603694":1500.00},"totalExpenses":{"Food":450.00},"netSavings":6550.00}
+
+  Validating January calculations...
+  [0;32mΓ£ô Validation passed:[0m netSavings = 6550.00
+  [0;32mΓ£ô Validation passed:[0m Response contains: 1500.00
+[0;36mΓåÆ Generate report for month with no data[0m
+  [0;32mΓ£ô PASS[0m - Status: 200 (expected 2xx)
+  Response: {"month":12,"year":2024,"totalIncome":{},"totalExpenses":{},"netSavings":0}
+
+  [0;32mΓ£ô Validation passed:[0m netSavings = 0
+[0;36mΓåÆ Generate report for invalid month[0m
+  [0;31mΓ£ù FAIL[0m - Expected: 4xx, Got: 200
+  Response: {"month":13,"year":2024,"totalIncome":{},"totalExpenses":{},"netSavings":0}
+
+[0;36mΓåÆ Generate report for month 0[0m
+  [0;31mΓ£ù FAIL[0m - Expected: 4xx, Got: 200
+  Response: {"month":0,"year":2024,"totalIncome":{},"totalExpenses":{},"netSavings":0}
+
+[0;34mΓöÇΓöÇ 6.2 Yearly Reports with Calculations ΓöÇΓöÇ[0m
+
+[0;36mΓåÆ Generate 2024 yearly report[0m
+  [0;32mΓ£ô PASS[0m - Status: 200 (expected 2xx)
+  Response: {"year":2024,"totalIncome":{"Salary":5500.00,"Freelance_1779603694":1500.00},"totalExpenses":{"Food":450.00},"netSavings":6550.00}
+
+  Validating yearly calculations...
+  [0;32mΓ£ô Validation passed:[0m netSavings = 6550.00
+[0;36mΓåÆ Generate report for year with no data[0m
+  [0;32mΓ£ô PASS[0m - Status: 200 (expected 2xx)
+  Response: {"year":2023,"totalIncome":{},"totalExpenses":{},"netSavings":0}
+
+  [0;32mΓ£ô Validation passed:[0m netSavings = 0
+
+[1;33mΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ[0m
+[1;33mSCENARIO 7: DATA ISOLATION BETWEEN USERS[0m
+[1;33mΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ[0m
+
+This scenario tests data security and isolation including:
+ΓÇó Users can only access their own data (expects 2xx for own data)
+ΓÇó Users cannot access other users' data (expects 4xx for others' data)
+ΓÇó Session-based user identification works correctly
+
+[0;34mΓöÇΓöÇ 7.1 Second User Setup ΓöÇΓöÇ[0m
+
+[0;36mΓåÆ Login as second user[0m
+  [0;31mΓ£ù FAIL[0m - Expected: 2xx, Got: 401
+  Response: {"message":"Invalid username or password"}
+
+[0;34mΓöÇΓöÇ 7.2 Data Isolation Verification ΓöÇΓöÇ[0m
+
+[0;36mΓåÆ Second user sees only default categories[0m
+  [0;31mΓ£ù FAIL[0m - Expected: 2xx, Got: 401
+
+  [0;32mΓ£ô Validation passed:[0m Second user cannot see first user's custom category
+[0;36mΓåÆ Second user has no transactions initially[0m
+  [0;31mΓ£ù FAIL[0m - Expected: 2xx, Got: 401
+
+  [0;32mΓ£ô Validation passed:[0m Response contains: 
+[0;36mΓåÆ Second user has no goals initially[0m
+  [0;31mΓ£ù FAIL[0m - Expected: 2xx, Got: 401
+
+  [0;32mΓ£ô Validation passed:[0m Response contains: 
+[0;34mΓöÇΓöÇ 7.3 Cross-User Data Access Prevention ΓöÇΓöÇ[0m
+
+[0;36mΓåÆ Second user cannot update first user's transaction[0m
+  [0;32mΓ£ô PASS[0m - Status: 401 (expected 4xx)
+
+[0;36mΓåÆ Second user cannot delete first user's goal[0m
+  [0;32mΓ£ô PASS[0m - Status: 401 (expected 4xx)
+
+[0;34mΓöÇΓöÇ 7.4 Independent User Operations ΓöÇΓöÇ[0m
+
+[0;36mΓåÆ Second user creates own transaction[0m
+  [0;31mΓ£ù FAIL[0m - Expected: 2xx, Got: 401
+
+[0;36mΓåÆ Second user creates own goal[0m
+  [0;31mΓ£ù FAIL[0m - Expected: 2xx, Got: 401
+
+  [0;31mΓ£ù Validation failed:[0m startDate expected 2026-05-24 or 2026-05-23, got 
+[0;36mΓåÆ First user still sees only own data[0m
+  [0;32mΓ£ô PASS[0m - Status: 200 (expected 2xx)
+  Response: {"transactions":[{"id":18,"amount":1500.00,"date":"2024-01-18","category":"Freelance_1779603694","description":"Client project payment","type":"INCOME"},{"id":17,"amount":450.00,"date":"2024-01-17","category":"Food","description":"Trying to change date","type":"EXPENSE"},{"id":15,"amount":5500.00,"date":"2024-01-15","category":"Salary","description":"Updated January Salary with bonus","type":"INCOME"}]}
+
+  [0;32mΓ£ô Validation passed:[0m First user cannot see second user's transaction
+  [0;32mΓ£ô Validation passed:[0m Found 3 occurrences of '"id":'
+
+[1;33mΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ[0m
+[1;33mSCENARIO 8: COMPREHENSIVE USER JOURNEY[0m
+[1;33mΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ[0m
+
+This scenario tests a complete user workflow including:
+ΓÇó Setting up categories and transactions
+ΓÇó Creating and tracking goals
+ΓÇó Generating reports
+ΓÇó Verifying data consistency across operations
+
+[0;34mΓöÇΓöÇ 8.1 User Workflow Setup ΓöÇΓöÇ[0m
+
+[0;36mΓåÆ First user creates custom category[0m
+  [0;32mΓ£ô PASS[0m - Status: 201 (expected 2xx)
+  Response: {"name":"SideBusiness_1779603694","type":"INCOME","custom":true}
+
+[0;36mΓåÆ Add side business income[0m
+  [0;32mΓ£ô PASS[0m - Status: 201 (expected 2xx)
+  Response: {"id":21,"amount":800.00,"date":"2024-01-25","category":"SideBusiness_1779603694","description":"Consulting work","type":"INCOME"}
+
+[0;34mΓöÇΓöÇ 8.2 Goal Progress Verification ΓöÇΓöÇ[0m
+
+[0;36mΓåÆ Check updated goal progress after new transaction[0m
+  [0;32mΓ£ô PASS[0m - Status: 200 (expected 2xx)
+  Response: {"id":8,"goalName":"Emergency Fund","targetAmount":15000.00,"targetDate":"2028-01-01","startDate":"2024-01-01","currentProgress":7350.00,"progressPercentage":49.00,"remainingAmount":7650.00}
+
+  [0;32mΓ£ô Validation passed:[0m currentProgress = 7350.00
+[0;34mΓöÇΓöÇ 8.3 Report Consistency ΓöÇΓöÇ[0m
+
+[0;36mΓåÆ Generate updated monthly report[0m
+  [0;32mΓ£ô PASS[0m - Status: 200 (expected 2xx)
+  Response: {"month":1,"year":2024,"totalIncome":{"Salary":5500.00,"Freelance_1779603694":1500.00,"SideBusiness_1779603694":800.00},"totalExpenses":{"Food":450.00},"netSavings":7350.00}
+
+  [0;32mΓ£ô Validation passed:[0m netSavings = 7350.00
+  [0;32mΓ£ô Validation passed:[0m Response contains: 800.00
+[0;36mΓåÆ Generate updated yearly report[0m
+  [0;32mΓ£ô PASS[0m - Status: 200 (expected 2xx)
+  Response: {"year":2024,"totalIncome":{"Salary":5500.00,"Freelance_1779603694":1500.00,"SideBusiness_1779603694":800.00},"totalExpenses":{"Food":450.00},"netSavings":7350.00}
+
+  [0;32mΓ£ô Validation passed:[0m netSavings = 7350.00
+[0;34mΓöÇΓöÇ 8.4 Session Management ΓöÇΓöÇ[0m
+
+[0;36mΓåÆ Logout first user[0m
+  [0;32mΓ£ô PASS[0m - Status: 200 (expected 2xx)
+  Response: {"message":"Logout successful"}
+
+[0;36mΓåÆ Logout second user[0m
+  [0;31mΓ£ù FAIL[0m - Expected: 2xx, Got: 401
+
+[0;36mΓåÆ Verify sessions invalidated[0m
+  [0;32mΓ£ô PASS[0m - Status: 401 (expected 4xx)
+
+
+[1;33mΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ[0m
+[1;33mTEST EXECUTION SUMMARY[0m
+[1;33mΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ[0m
+Base URL: [0;36mhttp://localhost:8081/api[0m
+Total Tests Executed: [0;34m86[0m
+Tests Passed: [0;32m65[0m
+Tests Failed: [0;31m21[0m
+Success Rate: [0;36m75%[0m
+
+[0;31mΓ¥î SOME TESTS FAILED Γ¥î[0m
+[0;31mPlease review the failed tests above and check your API implementation.[0m

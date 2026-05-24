@@ -22,6 +22,6 @@ public class RegisterRequest {
     private String fullName;
 
     @NotBlank(message = "Phone number is required")
-    @Pattern(regexp = "^\\+?[1-9]\\d{6,14}$", message = "Phone number must be a valid international number")
+    @Pattern(regexp = "^\\+?\\d{7,15}$", message = "Phone number must be a valid international number")
     private String phoneNumber;
 }

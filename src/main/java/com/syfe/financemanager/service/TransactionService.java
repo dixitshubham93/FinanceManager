@@ -58,11 +58,11 @@ public class TransactionService {
     }
 
     @Transactional(readOnly = true)
-    public TransactionListResponse getTransactions(LocalDate startDate, LocalDate endDate, Long categoryId) {
+    public TransactionListResponse getTransactions(LocalDate startDate, LocalDate endDate, String category) {
         Long userId = securityUtils.getCurrentUserId();
 
         List<TransactionResponse> transactions = transactionRepository
-                .findAllByUserIdWithFilters(userId, startDate, endDate, categoryId)
+                .findAllByUserIdWithFilters(userId, startDate, endDate, category)
                 .stream()
                 .map(TransactionResponse::from)
                 .toList();

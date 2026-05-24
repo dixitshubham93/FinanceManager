@@ -106,6 +106,22 @@ public class SavingsGoalService {
         return new MessageResponse("Goal deleted successfully");
     }
 
+    private BigDecimal normalizeDecimal(BigDecimal value) {
+        BigDecimal stripped = value.stripTrailingZeros();
+        if (stripped.scale() < 1) {
+            return stripped.setScale(1);
+        }
+        return stripped;
+    }
+
+    private BigDecimal formatProgress(BigDecimal value) {
+        BigDecimal scaled = value.setScale(2, RoundingMode.HALF_UP);
+        if (scaled.compareTo(BigDecimal.ZERO) == 0) {
+            return BigDecimal.ZERO;
+        }
+        return scaled;
+    }
+
     private SavingsGoalResponse buildGoalResponse(SavingsGoal goal, Long userId) {
         BigDecimal totalIncome = transactionRepository
                 .sumByUserIdAndTypeAndDateAfter(userId, TransactionType.INCOME, goal.getStartDate());
@@ -116,10 +132,10 @@ public class SavingsGoalService {
         BigDecimal targetAmount = goal.getTargetAmount();
 
         BigDecimal progressPercentage = targetAmount.compareTo(BigDecimal.ZERO) > 0
-                ? currentProgress
+                ? normalizeDecimal(currentProgress
                 .divide(targetAmount, 4, RoundingMode.HALF_UP)
                 .multiply(BigDecimal.valueOf(100))
-                .setScale(2, RoundingMode.HALF_UP)
+                .setScale(2, RoundingMode.HALF_UP))
                 : BigDecimal.ZERO;
 
         BigDecimal remainingAmount = targetAmount.subtract(currentProgress);
@@ -130,8 +146,8 @@ public class SavingsGoalService {
                 .targetAmount(goal.getTargetAmount())
                 .targetDate(goal.getTargetDate())
                 .startDate(goal.getStartDate())
-                .currentProgress(currentProgress.setScale(2, RoundingMode.HALF_UP))
-                .progressPercentage(progressPercentage)
+                .currentProgress(formatProgress(currentProgress))
+                .progressPercentage(normalizeDecimal(progressPercentage))
                 .remainingAmount(remainingAmount.setScale(2, RoundingMode.HALF_UP))
                 .build();
     }

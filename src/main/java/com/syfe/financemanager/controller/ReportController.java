@@ -11,6 +11,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("/api/reports")
 @RequiredArgsConstructor
@@ -26,9 +28,13 @@ public class ReportController {
             @ApiResponse(responseCode = "401", description = "Not authenticated")
     })
     @GetMapping("/monthly/{year}/{month}")
-    public ResponseEntity<MonthlyReportResponse> getMonthlyReport(
+    public ResponseEntity<?> getMonthlyReport(
             @PathVariable int year,
             @PathVariable int month) {
+        if (month < 1 || month > 12) {
+            return ResponseEntity.badRequest()
+                    .body(Map.of("message", "Month must be between 1 and 12"));
+        }
         return ResponseEntity.ok(reportService.getMonthlyReport(year, month));
     }
 

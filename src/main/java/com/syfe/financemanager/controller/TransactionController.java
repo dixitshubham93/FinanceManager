@@ -57,10 +57,10 @@ public class TransactionController {
             @Parameter(description = "Filter to date (YYYY-MM-DD)")
             @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate,
 
-            @Parameter(description = "Filter by category ID")
-            @RequestParam(required = false) Long categoryId) {
+            @Parameter(description = "Filter by category name")
+            @RequestParam(required = false) String category) {
 
-        return ResponseEntity.ok(transactionService.getTransactions(startDate, endDate, categoryId));
+        return ResponseEntity.ok(transactionService.getTransactions(startDate, endDate, category));
     }
 
     @Operation(summary = "Update a transaction",
